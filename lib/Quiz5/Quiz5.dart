@@ -1,7 +1,25 @@
 import 'package:flutter/material.dart';
-import 'Constants/consts.dart';
-import 'HomePage.dart';
-import 'Quiz_infos.dart';
+import 'package:quiz_app/HomePage.dart';
+import '../Constants/consts.dart';
+import 'Quiz5_infos.dart';
+
+class QuizTest5 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        backgroundColor: Colors.white,
+        body: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            child: QuestionPage(),
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class QuestionPage extends StatefulWidget {
   @override
@@ -12,17 +30,17 @@ class _QuestionPageState extends State<QuestionPage> {
   void buttonFunc(bool chosenButton) {
     {
       setState(() {
-        quiz_1.queBox1[queIndex].queBack == chosenButton
-            ? yesOrnoList.add(trueIcon)
-            : yesOrnoList.add(falseIcon);
+        quiz_2.queBox5[queIndex].queBack == chosenButton
+            ? yesOrnoList5.add(trueIcon)
+            : yesOrnoList5.add(falseIcon) ;
         queIndex++;
       });
     }
   }
-
-  List<Icon> yesOrnoList = [];
+  List<Icon> yesOrnoList5 = [];
   int queIndex = 0;
-  quizInfos1 quiz_1 = quizInfos1();
+  quizInfos5 quiz_2 = quizInfos5();
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,23 +48,23 @@ class _QuestionPageState extends State<QuestionPage> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
-        Expanded( // İstenilen alanda esnetme, sığdırma yapmak için kullanılır.
+        Expanded(
           flex: 4,
           child: Padding(
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quiz_1.queBox1[queIndex].queText,
+                quiz_2.queBox5[queIndex].queText,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 17),
               ),
             ),
           ),
         ),
-        Wrap(alignment: WrapAlignment.center, children: yesOrnoList), // Yatay ve dikey hizalama yapmak için kullanılır.
+        Wrap(alignment: WrapAlignment.center, children: yesOrnoList5),
         Expanded(
           flex: 1,
-          child: Padding( // Child Widget'a içerden boşluk vermek için kullanılır.
+          child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 6.0),
               child: Row(children: <Widget>[
                 Expanded(
@@ -62,18 +80,18 @@ class _QuestionPageState extends State<QuestionPage> {
                           ),
                           onPressed: () {
                             buttonFunc(false);
-                            if (yesOrnoList.length == 11) {
+                            if (yesOrnoList5.length == 5) {
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
-
+                                  // return object of type Dialog
                                   return AlertDialog(
                                     title: new Text(
                                       "End of the Quiz!",
                                       style: TextStyle(fontSize: 17),
                                     ),
                                     content: new Text(
-                                      "Keep on learn mate...",
+                                      "Knowledge is force, just get it!",
                                       style: TextStyle(fontSize: 17),
                                     ),
                                     actions: <Widget>[
@@ -87,8 +105,6 @@ class _QuestionPageState extends State<QuestionPage> {
                                           MaterialPageRoute(
                                               builder: (context) => HomePage()),
                                         ),
-
-
                                       ),
                                     ],
                                   );
@@ -96,7 +112,6 @@ class _QuestionPageState extends State<QuestionPage> {
                               );
 
                               queIndex = 0;
-                              //yesOrnoList = [];
                             }
                           },
                         ))),
@@ -108,28 +123,27 @@ class _QuestionPageState extends State<QuestionPage> {
                           textColor: Colors.white,
                           color: Color(0xff00B124),
                           child: //Icon(Icons.thumb_up, size: 30.0),
-                              Text(
+                          Text(
                             "True",
                             style: TextStyle(fontSize: 17),
                           ),
                           onPressed: () {
                             buttonFunc(true);
-                            if (yesOrnoList.length == 11) {
+                            if (yesOrnoList5.length == 5) {
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
-
+                                  // return object of type Dialog
                                   return AlertDialog(
                                     title: new Text(
                                       "End of the Quiz!",
                                       style: TextStyle(fontSize: 17),
                                     ),
                                     content: new Text(
-                                      "Keep on learn mate...",
+                                      "Knowledge is force, just get it!",
                                       style: TextStyle(fontSize: 17),
                                     ),
                                     actions: <Widget>[
-
                                       new FlatButton(
                                         child: new Text(
                                           "Close",
@@ -146,8 +160,6 @@ class _QuestionPageState extends State<QuestionPage> {
                                 },
                               );
                               queIndex = 0;
-                              //yesOrnoList = [];
-
                             }
                           },
                         ))),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:quiz_app/HomePage.dart';
-import 'package:quiz_app/Quiz3/Quiz3_infos.dart';
 import '../Constants/consts.dart';
+import 'Quiz8_infos.dart';
 
-class QuizTest3 extends StatelessWidget {
+class QuizTest8 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,17 +30,17 @@ class _QuestionPageState extends State<QuestionPage> {
   void buttonFunc(bool chosenButton) {
     {
       setState(() {
-        quiz_2.queBox3[queIndex].queBack == chosenButton
-            ? yesOrnoList3.add(trueIcon)
-            : yesOrnoList3.add(falseIcon) ;
+        quiz_2.queBox8[queIndex].queBack == chosenButton
+            ? yesOrnoList8.add(trueIcon)
+            : yesOrnoList8.add(falseIcon);
         queIndex++;
       });
     }
   }
-  List<Icon> yesOrnoList3 = [];
-    int queIndex = 0;
-  quizInfos3 quiz_2 = quizInfos3();
 
+  List<Icon> yesOrnoList8 = [];
+  int queIndex = 0;
+  quizInfos8 quiz_2 = quizInfos8();
 
   @override
   Widget build(BuildContext context) {
@@ -54,14 +54,14 @@ class _QuestionPageState extends State<QuestionPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quiz_2.queBox3[queIndex].queText,
+                quiz_2.queBox8[queIndex].queText,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 17),
               ),
             ),
           ),
         ),
-        Wrap(alignment: WrapAlignment.center, children: yesOrnoList3),
+        Wrap(alignment: WrapAlignment.center, children: yesOrnoList8),
         Expanded(
           flex: 1,
           child: Padding(
@@ -73,11 +73,14 @@ class _QuestionPageState extends State<QuestionPage> {
                         child: RaisedButton(
                           padding: EdgeInsets.all(12),
                           textColor: Colors.white,
-                          color: Color(0xff315561),
-                          child: Icon(Icons.arrow_downward_outlined),
+                          color: Color(0xffBC1319),
+                          child: Text(
+                            "False",
+                            style: TextStyle(fontSize: 17),
+                          ),
                           onPressed: () {
                             buttonFunc(false);
-                            if (yesOrnoList3.length == 5) {
+                            if (yesOrnoList8.length == 6) {
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
@@ -88,7 +91,7 @@ class _QuestionPageState extends State<QuestionPage> {
                                       style: TextStyle(fontSize: 17),
                                     ),
                                     content: new Text(
-                                     "Knowledge is force, just get it!",
+                                      "Knowledge is force, just get it!",
                                       style: TextStyle(fontSize: 17),
                                     ),
                                     actions: <Widget>[
@@ -118,11 +121,15 @@ class _QuestionPageState extends State<QuestionPage> {
                         child: RaisedButton(
                           padding: EdgeInsets.all(12),
                           textColor: Colors.white,
-                          color: Color(0xff1381BF),
-                          child: Icon(Icons.arrow_upward_outlined),
+                          color: Color(0xff00B124),
+                          child: //Icon(Icons.thumb_up, size: 30.0),
+                          Text(
+                            "True",
+                            style: TextStyle(fontSize: 17),
+                          ),
                           onPressed: () {
                             buttonFunc(true);
-                            if (yesOrnoList3.length == 5) {
+                            if (yesOrnoList8.length == 6) {
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {

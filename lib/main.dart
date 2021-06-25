@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/LoginPage.dart';
-import 'Quiz1.dart';
+import 'package:quiz_app/FirstPage.dart';
+import 'Quiz1/Quiz1.dart';
 
 void main() => runApp(MaterialApp(
-      home: LoginPage(),
+      home: FirstPage(),
       debugShowCheckedModeBanner: false,
     ));
 

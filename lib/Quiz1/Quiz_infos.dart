@@ -1,4 +1,4 @@
-import 'Question.dart';
+import '../Question.dart';
 
 class quizInfos1 {
 
